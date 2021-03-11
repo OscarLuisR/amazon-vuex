@@ -1,0 +1,42 @@
+https://www.youtube.com/playlist?list=PLhjTkG-kjlcj_KQpqjNuOrmMP1V_dD_vb
+
+
+
+<!-- Cart Button -->
+        <div class="dropdown">
+            <button
+                class="btn btn-info btn-block dropdown-toggle d-flex justify-content-around align-items-center"
+                data-toggle="dropdown"
+            >
+                <i class="fas fa-shopping-cart fa-3x mx-3"></i>
+                <div div class="mx-2 text-left">
+                    <p class="m-0">Productos: ({{cantProductsInCart}})</p>
+                    <p class="m-0">Total: $ {{totalPriceCart}}</p>
+                </div>
+            </button>
+
+            <!-- items products cart -->
+            <div class="dropdown-menu w-100 p-2">
+                <!-- ------------- -->
+                <!-- item product cart -->
+                <div class="d-flex align-items-center border border-info mb-1 p-1 justify-content-around" v-for="(productCart, index) in cart" :key="index">
+                    <i class="fas fa-hamburger fa-3x"></i>
+                    
+                    <div class="text-left">
+                        <p class="m-0 text-center">{{productCart.name}}</p>
+                        <p class="m-0 fs-14">Cant: {{productCart.cant}}</p>
+                        <p class="m-0 fs-14">
+                            Precio: {{productCart.moneda}}{{productCart.price}}
+                        </p>
+                    </div>
+                    
+                    <span class="delte-item" @click="removeCart(productCart)">X</span>
+                </div>
+                <!-- ------------- -->
+
+                <div class="dropdown-divider">
+                    <button class="btn btn-info btn-block">Go to Cart</button>
+                    <button class="btn btn-danger btn-block" @click="cleanCart">Clean Cart</button>
+                </div>
+            </div>
+        </div>
